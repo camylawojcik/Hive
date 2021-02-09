@@ -43,6 +43,7 @@
           Hive manages the meta-data only 
           O dado pode estar em qualquer lugar no HDFS ou outro
           Drop table vai dropar apenas a definição de tabela. O dado permanece intocado.
+
 #### HiveQL
   - Select * from where LIMIT;
   - Distinct, alias, expressão regular(segue a sintaxe Java);
@@ -51,6 +52,7 @@
   - Hive não é case sensitive
   - ; para finalizar o comando
   - Sub queries & Union
+
 #### Create Database:
   - Abstração para agroupar as tabelas;
   - /hive/warehouse/: nada mais que o diretório/local especificado onde o hive é "dono" e gerencia os dados; Ao criar uma tabela no hive e carrega-lá, é onde o dado estará;
@@ -60,9 +62,8 @@
   - USE db_name;
   - DROP DATABASE|SCHEMA if exists xxxx; 
   ```
-    CREATE [EXTERNAL] TABLE [IF NOT EXISTS] DB.TABLE_NAME [col_name], [PARTITIONED BY (col_name data_type)] [ROW FORMAT] [STORED AS file_format] [LOCATION hdfs_path] [TBLPROPERTIES (property_name= xxx)];
-    ```
+    CREATE [EXTERNAL] TABLE [IF NOT EXISTS] DB.TABLE_NAME [col_name], [PARTITIONED BY (col_name data_type)] [ROW FORMAT] [STORED AS file_format] [LOCATION hdfs_path] [TBLPROPERTIES (property_name= xxx)]; ```
   - Partition External Table: Precisa indicar onde fica a partição assim que particionar
-  - 
+
   
     
