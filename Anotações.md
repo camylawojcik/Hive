@@ -18,19 +18,20 @@
   - Builds on Hadoop core using MapReduce for Execution
   - possibilita o uso de 'schema' em dados não estruturados
   #### Hive Architecture
-    - Metastore: a arquitetura do Hive consiste em "Relational Metastore", onde o Hive armazena definições de tabelas, location of underline data, datatypes informations, informações sobre partições e etc. Todas as definições ficam aqui.
+  - Metastore: a arquitetura do Hive consiste em "Relational Metastore", onde o Hive armazena definições de tabelas, location of underline data, datatypes informations, informações sobre partições e etc. Todas as definições ficam aqui.
     - Derby database: é o default, tem várias limitações, especificamente quando está em multiuser. Muito comum utilizar o MySQL
     - HiveQL: driver responsavel por processar, compilar, otimizar e executar consultas
     - O hive nada mais é do que uma interface que permite executarmos SQL queries que são traduzidas ao MapReduce;
+    
   #### Hive Principles - Schema on Read
-    - Permite adicionar "alguma" estrutura o caos.
-    - A estrutura é aplicada quando o dado é lido;
-    - Usa Serializers/Deserializers para ler e escrever 
-    - Acesso mais fácil ao dado e abstrações
+  - Permite adicionar "alguma" estrutura o caos.
+  - A estrutura é aplicada quando o dado é lido;
+  - Usa Serializers/Deserializers para ler e escrever 
+  - Acesso mais fácil ao dado e abstrações
   #### Hive Warehouse
-    - Metadados sobre todos os objetos conhecidos para o hive, persistidos no Metastore
-    - __Databases__: abstração para separar tabelas em um domain
-    - Tables
+  - Metadados sobre todos os objetos conhecidos para o hive, persistidos no Metastore
+  - __Databases__: abstração para separar tabelas em um domain
+  - Tables
     - Partitions: split tables em partições baseado no valor de uma coluna
       - Buckets/Clusters: partições podem conter buckets baseados no hash de uma ou mais colunas. Não são fáceis de gerenciar, mas oferecem beneficios de performance em joins.
     - Localização do Local Hive warehouse: o hive define a localização no HDFS. É através desse warehouse que o Hive distingue quais são as Locally Managed Tables e quais são as Unmaneged external tables;
