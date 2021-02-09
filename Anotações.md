@@ -12,7 +12,7 @@
   - Em um parallel framework, você paralelismo e computação distribuida sem precisar gerenciar esses detalhes por conta. O hadoop mapreduce cuida disso pra você
   - O número de reducer depende da configuração do job e do problema a ser resolvido
   
-#### Introduction to Hive
+### Introduction to Hive
   - Opens up Big Data to the masses
   - Provides a SQL-like query language and interfaces
   - Builds on Hadoop core using MapReduce for Execution
@@ -44,7 +44,7 @@
           O dado pode estar em qualquer lugar no HDFS ou outro
           Drop table vai dropar apenas a definição de tabela. O dado permanece intocado.
 
-#### HiveQL
+### HiveQL
   - Select * from where LIMIT;
   - Distinct, alias, expressão regular(segue a sintaxe Java);
   - Translate to mapReduce
@@ -53,7 +53,7 @@
   - ; para finalizar o comando
   - Sub queries & Union
 
-#### Create Database:
+### Create Database:
   - Abstração para agroupar as tabelas;
   - /hive/warehouse/: nada mais que o diretório/local especificado onde o hive é "dono" e gerencia os dados; Ao criar uma tabela no hive e carrega-lá, é onde o dado estará;
   - base.db
