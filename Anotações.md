@@ -63,7 +63,9 @@
   - USE db_name;
   - DROP DATABASE|SCHEMA if exists xxxx; 
   ```
-    CREATE [EXTERNAL] TABLE [IF NOT EXISTS] DB.TABLE_NAME [col_name], [PARTITIONED BY (col_name data_type)] [ROW FORMAT] [STORED AS file_format] [LOCATION hdfs_path] [TBLPROPERTIES (property_name= xxx)]; ```
+    CREATE [EXTERNAL] TABLE [IF NOT EXISTS] DB.TABLE_NAME [col_name], [PARTITIONED BY (col_name data_type)] [ROW FORMAT] [STORED AS file_format] [LOCATION hdfs_path] [TBLPROPERTIES (property_name= xxx)]; 
+    LOAD DATA INPATH 'XXX/XXX/' INTO TABLE movies;
+    ```
   - Partition External Table: Precisa indicar onde fica a partição assim que particionar
 
   
