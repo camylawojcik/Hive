@@ -51,16 +51,18 @@
   - Hive não é case sensitive
   - ; para finalizar o comando
   - Sub queries & Union
-  #### Create Database:
-    - Abstração para agroupar as tabelas;
-    - /hive/warehouse/: nada mais que o diretório/local especificado onde o hive é "dono" e gerencia os dados; Ao criar uma tabela no hive e carrega-lá, é onde o dado estará;
-    - base.db
-    - CREATE DATABASE|SCHEMA IF NOT EXISTS database_name campos,LOCATION, WITH DBPROPERTIES
-    - Pode conter managed tables ou external tables;
-    - USE db_name;
-    - DROP DATABASE|SCHEMA if exists xxxx; 
-    - ````CREATE [EXTERNAL] TABLE [IF NOT EXISTS] DB.TABLE_NAME [col_name], [PARTITIONED BY (col_name data_type)] [ROW FORMAT] [STORED AS file_format] [LOCATION hdfs_path] [TBLPROPERTIES (property_name= xxx)];````
-    - Partition External Table: Precisa indicar onde fica a partição assim que particionar
-    
+#### Create Database:
+  - Abstração para agroupar as tabelas;
+  - /hive/warehouse/: nada mais que o diretório/local especificado onde o hive é "dono" e gerencia os dados; Ao criar uma tabela no hive e carrega-lá, é onde o dado estará;
+  - base.db
+  - CREATE DATABASE|SCHEMA IF NOT EXISTS database_name campos,LOCATION, WITH DBPROPERTIES
+  - Pode conter managed tables ou external tables;
+  - USE db_name;
+  - DROP DATABASE|SCHEMA if exists xxxx; 
+  ```
+    CREATE [EXTERNAL] TABLE [IF NOT EXISTS] DB.TABLE_NAME [col_name], [PARTITIONED BY (col_name data_type)] [ROW FORMAT] [STORED AS file_format] [LOCATION hdfs_path] [TBLPROPERTIES (property_name= xxx)];
+    ```
+  - Partition External Table: Precisa indicar onde fica a partição assim que particionar
+  - 
   
     
