@@ -43,8 +43,12 @@
           Hive manages the meta-data only 
           O dado pode estar em qualquer lugar no HDFS ou outro
           Drop table vai dropar apenas a definição de tabela. O dado permanece intocado.
-
-      
-    - External Tables: 
-    
+#### HiveQL
+  - Select * from where LIMIT;
+  - Distinct, alias, expressão regular(segue a sintaxe Java);
+  - Translate to mapReduce
+  - Possível alterar a sintaxe para FROM XXX select xxxx WHERE;
+  - Hive não é case sensitive
+  - ; para finalizar o comando
+  - Sub queries & Union
     
