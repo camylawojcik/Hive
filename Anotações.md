@@ -62,11 +62,31 @@
   - Pode conter managed tables ou external tables;
   - USE db_name;
   - DROP DATABASE|SCHEMA if exists xxxx; 
-  ```
-    CREATE [EXTERNAL] TABLE [IF NOT EXISTS] DB.TABLE_NAME [col_name], [PARTITIONED BY (col_name data_type)] [ROW FORMAT] [STORED AS file_format] [LOCATION hdfs_path] [TBLPROPERTIES (property_name= xxx)]; 
+  - Partition External Table: Precisa indicar onde fica a partição assim que particionar
+  ``` CREATE [EXTERNAL] TABLE [IF NOT EXISTS] DB.TABLE_NAME [col_name], [PARTITIONED BY (col_name data_type)] [ROW FORMAT] [STORED AS file_format] [LOCATION hdfs_path] [TBLPROPERTIES (property_name= xxx)]; 
     LOAD DATA INPATH 'XXX/XXX/' INTO TABLE movies;
     ```
-  - Partition External Table: Precisa indicar onde fica a partição assim que particionar
 
-  
+### HQL
+  - Array<data type>
+  - Maps MAP<primitive, data type>
+  - Struct <col:data type>
+  - Union Type 
+  - Cast('13' AS INT)
+  #### Partitions:
+    - Managed Tables:
+      - ```
+      CREAT TABLE page_views(eventTime STRING, userid STRING, page STRING) PARTITIONED BY(dt STRING, applicationtype STRING)
+      STORED AS TEXTFILE;
+      LOAD DATA INPATH 'mydata/android/Aug_10_2013/pageviews INTO TABLE page_views
+      PARTITIONS(dt=2013-08-10', applicationtype='android');```
+      - Precisa informar a partição, senão gera exceção;
+      - __Virtual Columns__
+    - External Partitioned Tables:
+      - ```
+      CREATE EXTERNAL TABLE page_views(eventTime STRING, userid STRING, page STRING) PARTITIONED BY(dt STRING, applicationtype STRING)
+      STORED AS TEXTFILE;
+      ALTER TABLE page_views ADD PARTITION(dt='2013-09-09', applicationtype='Windoes Phone 8') LOCATION 'somewhere/on/hdfs/data/2013-09-09/wp8';
+      ```
+    - explain select * from xxx where id = 13;
     
