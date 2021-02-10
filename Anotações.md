@@ -89,4 +89,12 @@
       ALTER TABLE page_views ADD PARTITION(dt='2013-09-09', applicationtype='Windoes Phone 8') LOCATION 'somewhere/on/hdfs/data/2013-09-09/wp8';
       ```
       - explain select * from xxx where id = 13;
-    
+      - MSCK REPAIR TABLE xxxx; : o hive scaneia a tabela e encontra as novas partições;
+  - #### Multiple Inserts
+    - Interchangeability of blocks;
+    - Por default, o Hive cria partições em managed tables 
+      - Dynamic Partition
+        - Default maximum dynamic partition =1000 (hive.exec.max.dynamic.partitionshive.exec.max.dynamic.partitions.pernode)
+        - number of files a data node can service in hdfs-site.xml
+          - dfs.datanode.max.xcievers=4096
+      - Static Partition
