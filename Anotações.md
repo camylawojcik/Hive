@@ -91,10 +91,26 @@
       - explain select * from xxx where id = 13;
       - MSCK REPAIR TABLE xxxx; : o hive scaneia a tabela e encontra as novas partições;
   - #### Multiple Inserts
+    - ``` FROM from_Statement
+          INSERT OVERWRITE TABLE table1 [PARTITION(partcol1=val1) select_statement1
+          INSERT OVERWRITE TABLE table1 [PARTITION(partcol1=val1) select_statement1
+      ```
+          
     - Interchangeability of blocks;
     - Por default, o Hive cria partições em managed tables 
       - Dynamic Partition
         - Default maximum dynamic partition =1000 (hive.exec.max.dynamic.partitionshive.exec.max.dynamic.partitions.pernode)
         - number of files a data node can service in hdfs-site.xml
           - dfs.datanode.max.xcievers=4096
+        - ```CREATE TABLE views_Stg(eventTime String, userID STRING) partitioned by(DT STRING, APPLICATIONTYPE STRING, PAGE STRING);```
+        - ``` FROM page_Views src INSERT OVERWRITE TABLE view_Stg PARTITION(dt='2013-09-13', appkicationtype='web, page='home') SELECT src_Eventtime, src.userid, where dt='2013-09-13' AND applicationtype ='Web', page='Home' ```
+          - o hive trabalha melhor com arquivos maiores do que com vários menores; Cada arquivo é quebrado em blocos, e cada bloco reserva um mapper. O bloco normalmente tem entre 64mb e 128mb.
+          - Uma das razões para blocos maiores é o namenode (bloco responsável por entender onde o dado está), ele precisa conseguir rastrear o dados. E quanto mais dado, maior o rastreamento e maior o uso de memória. E toda essa informação armazenada no namenode em uma estrutura de hash.
+          - Quanto maior o tamanho do bloco, menor o número de blocos necessário para representar os arquivos
+          - Aumentar o numero maximo de arquivos que um datanode pode servir: hdfs-site.xml 
       - Static Partition
+  - __HQL__ 
+    - GORUPING SETS ((A,B),A) = Seria a mesma coisa que 2 queries com union agrupando por a e a,b
+    - CUBE: ```SELECT A,B,C, SUM(D) FROM T1 GROUP BY A, B, WITH CUBE ```
+      - O hive criará todas as combinações de group by, semelhante ao grouping sets
+    - ROLLUP: Agrupa em hierarquia considerando a ordem em que as colunas foram listadas, gerando GROUPING SETS = (a,b,c),(a,b),a, ())
